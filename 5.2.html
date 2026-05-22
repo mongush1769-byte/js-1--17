@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Экранная клавиатура</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        button {
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+        }
+        .space {
+            width: 300px;
+        }
+        .caps {
+            width: 60px;
+        }
+        input {
+            width: 300px;
+            padding: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .keyboard {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inp">
+    <div class="keyboard" id="key"></div>
+
+    <script>
+        let caps = false;
+        let keys = 'qwertyuiopasdfghjklzxcvbnm';
+        let html = '';
+        
+        function draw() {
+            let html = '';
+            let currentKeys = caps ? keys.toUpperCase() : keys;
+            
+            for(let i = 0; i < currentKeys.length; i++) {
+                html += `<button onclick="add('${currentKeys[i]}')">${currentKeys[i]}</button>`;
+                if(i === 9 || i === 19 || i === 28) html += '<br>';
+            }
+            html += '<br><button class="space" onclick="add(\' \')">Пробел</button>';
+            html += '<button class="caps" onclick="toggleCaps()">Caps</button>';
+            document.getElementById('key').innerHTML = html;
+        }
+        
+        function add(char) {
+            document.getElementById('inp').value += char;
+        }
+        
+        function toggleCaps() {
+            caps = !caps;
+            draw();
+        }
+        
+        draw();
+    </script>
+</body>
+</html>

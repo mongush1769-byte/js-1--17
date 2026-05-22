@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор треугольника по 3 сторонам</title>
+</head>
+<body>
+    <script>
+let a = +prompt("Введите сторону a");
+let b = +prompt("Введите сторону b");
+let c = +prompt("Введите сторону c");
+let p = (a + b + c) / 2;
+let area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+alert("Площадь треугольника: " + area);
+    </script>
+</body>
+</html>

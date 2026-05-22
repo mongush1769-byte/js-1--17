@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общие делители</title>
+</head>
+<body>
+    <input type="number" id="a" placeholder="Число 1">
+    <input type="number" id="b" placeholder="Число 2">
+    <button onclick="show()">Найти</button>
+    <p id="out"></p>
+
+    <script>
+        function show() {
+            let a = Number(document.getElementById('a').value);
+            let b = Number(document.getElementById('b').value);
+            let out = "";
+            
+            for (let i = 1; i <= a && i <= b; i++) {
+                if (a % i === 0 && b % i === 0) {
+                    out = out + i + " ";
+                }
+            }
+            
+            document.getElementById('out').innerHTML = out;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тройка Пифагора</title>
+</head>
+<body>
+    <input type="number" id="a" placeholder="a">
+    <input type="number" id="b" placeholder="b">
+    <input type="number" id="c" placeholder="c">
+    <button onclick="check()">Проверка</button>
+    <p id="pyt"></p>
+    <script>
+        function check() {
+            let a = Number(document.getElementById('a').value);
+            let b = Number(document.getElementById('b').value);
+            let c = Number(document.getElementById('c').value);
+            
+            let max = Math.max(a, b, c);
+            let isPythagorean = (max === a && a * a === b * b + c * c) ||
+                                (max === b && b * b === a * a + c * c) ||
+                                (max === c && c * c === a * a + b * b);
+            
+           if (isPythagorean) {
+    document.getElementById('pyt').innerHTML = "Тройка пифагора";
+} else {
+    document.getElementById('pyt').innerHTML = "Не тройка пифагора";
+}
+        }
+    </script>
+</body>
+</html>

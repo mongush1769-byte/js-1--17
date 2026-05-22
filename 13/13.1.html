@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вкладки Tabs</title>
+    <style>
+        #parent {
+            margin: 0 auto;
+            width: 400px;
+        }
+        .menu a {
+            margin-right: 5px;
+            display: inline-block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            border: 1px solid gray;
+        }
+        .menu a:hover {
+            background: #f8f8f8;
+        }
+        .menu a.active {
+            border-color: transparent;
+            background: #f2f2f2;
+        }
+
+        .tabs .tab:not(.active) {
+            display: none;
+        }
+        .tabs .tab {
+            padding: 10px;
+            background: #f2f2f2;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="menu">
+            <a href="#" class="active">вкладка 1</a>
+            <a href="#">вкладка 2</a>
+            <a href="#">вкладка 3</a>
+        </div>
+        <div class="tabs">
+            <div class="tab active">
+                текст вкладки 1
+            </div>
+            <div class="tab">
+                текст вкладки 2
+            </div>
+            <div class="tab">
+                текст вкладки 3
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Находим все ссылки в меню
+        let links = document.querySelectorAll('.menu a');
+        // Находим все вкладки
+        let tabs = document.querySelectorAll('.tabs .tab');
+
+        // Для каждой ссылки добавляем обработчик клика
+        for (let i = 0; i < links.length; i++) {
+            links[i].onclick = function(event) {
+                event.preventDefault(); 
+                
+                //  Убираем класс active у всех ссылок
+                for (let j = 0; j < links.length; j++) {
+                    links[j].classList.remove('active');
+                }
+                
+                // 2. Убираем класс active у всех вкладок
+                for (let j = 0; j < tabs.length; j++) {
+                    tabs[j].classList.remove('active');
+                }
+                
+                // 3. Добавляем класс active текущей ссылке
+                this.classList.add('active');
+                
+                // 4. Добавляем класс active вкладке с таким же индексом
+                tabs[i].classList.add('active');
+            };
+        }
+    </script>
+</body>
+</html>

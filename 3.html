@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+</head>
+<body>
+    <h1>Угадай число от 1 до 100</h1>
+    <input type="number" id="guess" placeholder="Введите число">
+    <button onclick="check()">Проверить</button>
+    <p id="message"></p>
+
+    <script>
+        let secret = Math.floor(Math.random() * 100) + 1;
+        
+        function check() {
+            let num = Number(document.getElementById('guess').value);
+            let msg = document.getElementById('message');
+            
+            if (num === secret) {
+                msg.innerHTML = "Ты угадал число " + secret + " ";
+            } else if (num < secret) {
+                msg.innerHTML = " Введите число ПОБОЛЬШЕ";
+            } else {
+                msg.innerHTML = " Введите число ПОМЕНЬШЕ";
+            }
+        }
+    </script>
+</body>
+</html>

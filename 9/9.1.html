@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гороскоп</title>
+     <link rel="stylesheet" href="9.1.css">
+</head>
+<body>
+    <h1> Гороскоп</h1>
+    <input type="date" id="birthdate">
+    <div class="radio-group">
+        <label><input type="radio" name="day" value="0" checked> Сегодня</label>
+        <label><input type="radio" name="day" value="1"> Завтра</label>
+        <label><input type="radio" name="day" value="2"> Послезавтра</label>
+    </div>
+    <button onclick="getHoroscope()">Узнать</button>
+    <div id="result"></div>
+     <script src="9.1.js"></script>
+</body>
+</html>

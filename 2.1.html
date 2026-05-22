@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квадратное уравнение</title>
+</head>
+<body>
+    <input type="number" id="a" placeholder="a">
+    <input type="number" id="b" placeholder="b">
+    <input type="number" id="c" placeholder="c">
+    <button onclick="solve()">Найти корни</button>
+    <p id="disc"></p>
+
+    <script>
+        function solve() {
+            let a = Number(document.getElementById('a').value);
+            let b = Number(document.getElementById('b').value);
+            let c = Number(document.getElementById('c').value);
+            
+            let d = (b * b) - (4 * a * c);
+            
+            let x1 = (-b + Math.sqrt(d)) / (2 * a);
+            let x2 = (-b - Math.sqrt(d)) / (2 * a);
+            
+            document.getElementById('disc').innerHTML = "x1 = " + x1 + "<br> x2 = " + x2;
+        }
+    </script>
+</body>
+</html>

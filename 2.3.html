@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Делители числа</title>
+</head>
+<body>
+    <input type="number" id="num" placeholder="Число">
+    <button onclick="show()">Найти</button>
+    <p id="out"></p>
+
+    <script>
+        function show() {
+            let n = Number(document.getElementById('num').value);
+            let result = "";
+            
+            for (let i = 1; i <= n; i++) {
+                if (n % i === 0) {
+                    result = result + i + " ";
+                }
+            }
+            document.getElementById('out').innerHTML = result;
+        }
+    </script>
+</body>
+</html>

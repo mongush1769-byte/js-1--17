@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>меньший делитель обоих чисел</title>
+</head>
+<body>
+    <input type="number" id="a" placeholder="Число 1">
+    <input type="number" id="b" placeholder="Число 2">
+    <button onclick="show()">Найти</button>
+    <p id="out"></p>
+
+    <script>
+        function show() {
+            let a = Number(document.getElementById('a').value);
+            let b = Number(document.getElementById('b').value);
+            
+            let max = a * b;
+            let deli = max;
+            
+            for (let i = max; i >= 1; i--) {
+                if (i % a === 0 && i % b === 0) {
+                    deli = i;
+                }
+            }
+            
+            document.getElementById('out').innerHTML = "меньший делитель: " + deli;
+        }
+    </script>
+</body>
+</html>

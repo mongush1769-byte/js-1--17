@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра в города</title>
+</head>
+<body>
+    <input id="field" placeholder="Введите город">
+    <div id="message"></div>
+
+    <script>
+        let cities = [];
+        let player = 1;
+        let field = document.querySelector('#field');
+        let message = document.querySelector('#message');
+        
+        field.onkeypress = function(event) {
+            if (event.key === 'Enter') {
+                let city = field.value.trim();
+                field.value = '';
+                
+                if (city === '') {
+                    message.innerHTML = 'Введите город!';
+                    return;
+                }
+                
+                // Первый ход
+                if (cities.length === 0) {
+                    cities.push(city);
+                    message.innerHTML = `Игрок ${player} назвал "${city}". Ходит игрок ${player === 1 ? 2 : 1}`;
+                    player = player === 1 ? 2 : 1;
+                    return;
+                }
+                
+                // Получаем буквы
+                let lastCity = cities[cities.length - 1];
+                let lastLetter = lastCity.slice(-1).toLowerCase();
+                let firstLetter = city[0].toLowerCase();
+                
+                // Проверки
+                if (firstLetter !== lastLetter) {
+                    message.innerHTML = `Город должен начинаться на "${lastLetter}"! Игрок ${player}, попробуй ещё`;
+                    return;
+                }
+                
+                if (cities.includes(city)) {
+                    message.innerHTML = `Город "${city}" уже был! Игрок ${player}, попробуй ещё`;
+                    return;
+                }
+                
+                // Всё правильно
+                cities.push(city);
+                message.innerHTML = `Игрок ${player} назвал "${city}". Ходит игрок ${player === 1 ? 2 : 1}`;
+                player = player === 1 ? 2 : 1;
+            }
+        };
+    </script>
+</body>
+</html>

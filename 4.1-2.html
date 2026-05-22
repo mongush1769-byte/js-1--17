@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Угадай ячейку с таймером</title>
+    <style>
+        td {
+            width: 35px;
+            height: 35px;
+            border: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Найди 10 ячеек за 45 секунд</h2>
+    <div class="timer" id="timer">45</div>
+    <div id="board"></div>
+    <p>Найдено: <span id="count">0</span> / 10</p>
+
+    <script>
+        let secrets = [];
+        let found = [];
+        let time = 45;
+        let playing = true;
+        
+        // ЗАГАДЫВАЕМ ЯЧЕЙКИ
+        for(let i = 0; i < 10; i++) {
+            let r;
+            do { 
+                r = Math.floor(Math.random() * 100); 
+            } while(secrets.includes(r));
+            secrets.push(r);
+        }
+        
+        // ТАЙМЕР
+        let timer = setInterval(() => {
+            if(!playing) return;
+            time--;
+            document.getElementById('timer').innerHTML = time;
+            if(time <= 0) {
+                clearInterval(timer);
+                playing = false;
+                alert('Ты проиграл');
+                draw();
+            }
+        }, 1000);
+        
+        // РИСУЕМ ПОЛЕ
+        function draw() {
+            let html = '<table>';
+            for(let i = 0; i < 10; i++) {
+                html += '<tr>';
+                for(let j = 0; j < 10; j++) {
+                    let index = i * 10 + j;
+                    
+                    if(found.includes(index)) {
+                        html += '<td class="green" onclick="clickCell(' + index + ')">✓</td>';
+                    } else if(!playing && secrets.includes(index)) {
+                        html += '<td style="background:orange" onclick="clickCell(' + index + ')">?</td>';
+                    } else {
+                        html += '<td onclick="clickCell(' + index + ')">?</td>';
+                    }
+                }
+                html += '</tr>';
+            }
+            html += '</table>';
+            document.getElementById('board').innerHTML = html;
+            document.getElementById('count').innerHTML = found.length;
+        }
+        
+        // КЛИК
+        function clickCell(index) {
+            if(!playing) return;
+            if(found.includes(index)) return;
+            
+            if(secrets.includes(index)) {
+                found.push(index);
+                draw();
+                if(found.length === 10) {
+                    clearInterval(timer);
+                    playing = false;
+                    alert('Ты выиграл');
+                }
+            } else {
+                let td = event.target;
+                td.style.backgroundColor = 'red';
+                setTimeout(() => td.style.backgroundColor = '', 300);
+            }
+        }
+        
+        draw();
+    </script>
+</body>
+</html>

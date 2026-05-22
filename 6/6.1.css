@@ -1,0 +1,89 @@
+/* главное тело */
+body {
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+/* контейнер календаря */
+#calendar {
+    display: inline-block;
+    text-align: right;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+/* контейнер для навигации и заголовка */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    gap: 20px;
+}
+/* стили для кнопок навигации */
+.nav-link {
+    background-color: #2a682c;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+/* заголовок с месяцем и годом */
+.month-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-family: Arial, sans-serif;
+    flex-grow: 1;
+}
+/* стили для недели (ряд) */
+.week-row {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 10px;
+    justify-content: flex-end;
+}
+/* стили для дней недели */
+.weekdays-row {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 10px;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+.weekday-cell {
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    width: 50px;
+    color: #555;
+}
+/* стили для каждого дня */
+.day-cell {
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 40px;
+    transition: all 0.3s ease;
+    width: 50px;
+}
+/* когда наводишься */
+.day-cell:hover {
+    background-color: #2a682c;
+    color: white;
+    cursor: pointer;
+}
+/* стиль для сегодняшнего дня - КРАСНЫЙ */
+.day-cell.today {
+    background-color: #ee4a4a;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #ee4a4a;
+}
